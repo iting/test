@@ -2,7 +2,7 @@ package com.company;
 import java.util.*;
 
 
-
+// leetcode questions: https://leetcode.com/problems/ip-to-cidr/submissions/
 public class IpRangeToCIDR {
 
     public IpRangeToCIDR() {
