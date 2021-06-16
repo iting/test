@@ -26,7 +26,8 @@ public class RegularExpression {
                 return false;
             }
             // why here?
-            return isFirstMatch && isMatch(source.substring(1), pattern.substring(2));
+            return isFirstMatch &&
+                    (isMatch(source.substring(1), pattern.substring(2)) || isMatch(source.substring(1), pattern));
         }
 
         return isFirstMatch && isMatch(source.substring(1), pattern.substring(1));

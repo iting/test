@@ -16,9 +16,6 @@ public class TestRegularExpression {
     @Test
     public void test2() {
         RegularExpression sol = new RegularExpression();
-        assertEquals(sol.isMatch("saaaa", "s+a*"), true);
-        assertEquals(sol.isMatch("saaaa", "s+b*"), false);
-        assertEquals(sol.isMatch("saaaab", "s+a*"), false);
-        assertEquals(sol.isMatch("saaaab", "s+b*"), false);
+        assertEquals(sol.isMatch("ssaaaa", "s+a*"), true);
     }
 }
