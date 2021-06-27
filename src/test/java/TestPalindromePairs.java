@@ -18,4 +18,15 @@ public class TestPalindromePairs {
             System.out.println(res.get(i));
         }
     }
+
+    @Test
+    public void testCase2() throws IOException {
+        // This test case is passing
+        PalindromePairs sol = new PalindromePairs();
+        String[] words = new String[] {"a",""};
+        List<List<Integer>> res = sol.findPairs(words);
+        for(int i=0; i<res.size(); i++) {
+            System.out.println(res.get(i));
+        }
+    }
 }
