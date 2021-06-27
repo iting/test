@@ -9,7 +9,6 @@ public class TestTravelBuddy {
 
     @Test
     public void TestCase1() {
-//        assertEquals(sol.reOrg("aaab"), "");
 
         Set<String> myWishList = new HashSet<>(Arrays.asList(new String[]{"a", "b", "c", "d"}));
 
