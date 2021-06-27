@@ -20,50 +20,46 @@ public class DisplayPage {
         // for the response, we want to optimize for all users to show their listing
         // instead of showing one user's listing several times
 
-        LinkedList<String> qu = new LinkedList<String>();
+        LinkedList<String> qu = new LinkedList<String>(); // linkedList to get data in O(1) time
         for(String each: input) {
             qu.add(each);
         }
         List<String> result = new ArrayList<>();
         int count = 0;
+        int ptr = 0;
         // use this to make sure no duplicate in the id
-        Set<String> set = new HashSet<>();
-        boolean isEnd = false;
-        int i = 0;
+        Set<String> hosts = new HashSet<>();
+        boolean reachEnd = false;
 
         while(!qu.isEmpty()) {
 
-            String cur = qu.get(i);
+            String cur = qu.get(ptr);
+            String hostID = cur.split(",")[0];
 
-            String user_id = cur.split(",")[0];
-
-            // 1. try best to make sure no duplicate
-            // 2. or if we reached the end of the queue, we are forced to use duplicate id
-            if(!set.contains(user_id) || isEnd) {
-                set.add(user_id);
+            if (!hosts.contains(hostID) || reachEnd) {
                 result.add(cur);
-                count +=1;
-                qu.remove(i);
+                qu.remove(ptr);
+                count += 1;
+                hosts.add(hostID);
             } else {
-                i+=1;
+                ptr += 1;
             }
 
-            if(count == pageSize) {
-                if(!input.isEmpty()) {
+            if (count == pageSize) {
+                if (!input.isEmpty()) {
                     result.add(" ");
                 }
-                // reset everything since we can start the next page
+                // reset everything
                 count = 0;
-                set.clear();
-                i = 0;
-                isEnd = false;
+                reachEnd = false;
+                hosts = new HashSet<>();
+                ptr = 0;
             }
 
-            if(i == qu.size()) {
-                isEnd = true;
-                i = 0;
+            if (ptr == qu.size()) {
+                ptr = 0;
+                reachEnd = true;
             }
-
         }
         return result;
     }
